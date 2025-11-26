@@ -1,0 +1,84 @@
+/* ===== Firma Pastel Rainbow (opacidad baja) ===== */
+:root{
+  --w:360px;               /* ancho de la firma; ajustar si quieres */
+  --radius:18px;
+  --glass-bg: rgba(255,255,255,0.10);
+  --accent-grad: linear-gradient(135deg,#ffd1e9,#c9b3f5,#a2e7ff,#bfffbf,#ffe7a7);
+  --text-white: rgba(255,255,255,0.95);
+}
+
+/* Reset mínimo */
+*{box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-white)}
+
+/* Wrapper */
+.firma-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:12px;
+}
+
+/* Marco con degradado y efecto glass */
+.firma-frame{
+  width:var(--w);
+  border-radius:calc(var(--radius) + 4px);
+  padding:14px;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  position:relative;
+  text-align:center;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border:4px solid transparent;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient( to bottom right, rgba(255,255,255,0.08), rgba(255,255,255,0.03) ),
+    var(--accent-grad);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  overflow:hidden;
+  border-radius:calc(var(--radius) + 4px);
+}
+
+/* Imagen / GIF como fondo dentro de un cuadro */
+.firma-media{
+  width:100%;
+  padding-top:56%; /* proporción ~16:9; cambia si quieres otra */
+  border-radius:14px;
+  background-image: url("https://i.pinimg.com/originals/3a/38/04/3a380430cb66667dc63eeddafdc889a4.gif");
+  background-size: cover;
+  background-position: center;
+  margin-bottom:10px;
+  opacity: 0.15; /* opacidad muy baja, suave */
+  transition: opacity .35s ease;
+  pointer-events:none;
+  filter: saturate(1.05);
+}
+
+/* Texto principal (frase) */
+.firma-texto{
+  font-family:'Oooh Baby', cursive;
+  font-size:20px;
+  color:var(--text-white);
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
+  margin-bottom:6px;
+}
+
+/* Nombre/alias */
+.firma-nombre{
+  font-size:13px;
+  color: rgba(255,255,255,0.9);
+  letter-spacing:0.6px;
+}
+
+/* Animación de glow sutil en el marco */
+@keyframes pastelGlow {
+  0% { box-shadow: 0 6px 18px rgba(167,119,255,0.12); transform:translateY(0); }
+  50% { box-shadow: 0 12px 34px rgba(167,119,255,0.18); transform:translateY(-2px); }
+  100% { box-shadow: 0 6px 18px rgba(167,119,255,0.12); transform:translateY(0); }
+}
+.firma-frame { animation: pastelGlow 5.5s ease-in-out infinite; }
+
+/* Responsive: si el foro restringe anchura, se adapta */
+@media (max-width:380px){
+  :root{--w:320px}
+}
