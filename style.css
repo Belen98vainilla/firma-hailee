@@ -1,14 +1,13 @@
-/* ===== Firma Pastel Rainbow (opacidad baja) ===== */
 :root{
-  --w:360px;               /* ancho de la firma; ajustar si quieres */
+  --w:360px;
   --radius:18px;
-  --glass-bg: rgba(255,255,255,0.10);
-  --accent-grad: linear-gradient(135deg,#ffd1e9,#c9b3f5,#a2e7ff,#bfffbf,#ffe7a7);
+  --glass-bg: rgba(0,0,0,0.08);
+  --accent-grad: linear-gradient(135deg,#ff9a9e,#fad0c4,#a1c4fd,#c2e9fb);
   --text-white: rgba(255,255,255,0.95);
 }
 
 /* Reset mínimo */
-*{box-sizing:border-box}
+*{box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-white)}
 
 /* Wrapper */
@@ -24,61 +23,60 @@ body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-wh
   width:var(--w);
   border-radius:calc(var(--radius) + 4px);
   padding:14px;
-  background: linear-gradient(to bottom right, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  background: var(--glass-bg);
   position:relative;
   text-align:center;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border:4px solid transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border:3px solid transparent;
   background-clip: padding-box, border-box;
   background-image:
-    linear-gradient( to bottom right, rgba(255,255,255,0.08), rgba(255,255,255,0.03) ),
+    var(--glass-bg),
     var(--accent-grad);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
   overflow:hidden;
-  border-radius:calc(var(--radius) + 4px);
 }
 
-/* Imagen / GIF como fondo dentro de un cuadro */
+/* Imagen / GIF */
 .firma-media{
   width:100%;
-  padding-top:56%; /* proporción ~16:9; cambia si quieres otra */
+  padding-top:50%; /* proporción aproximada del gif */
   border-radius:14px;
   background-image: url("https://i.pinimg.com/originals/3a/38/04/3a380430cb66667dc63eeddafdc889a4.gif");
   background-size: cover;
   background-position: center;
-  margin-bottom:10px;
-  opacity: 0.15; /* opacidad muy baja, suave */
+  margin-bottom:12px;
+  opacity: 0.25; /* un poco más visible que antes */
   transition: opacity .35s ease;
   pointer-events:none;
-  filter: saturate(1.05);
+  filter: saturate(1.1);
 }
 
-/* Texto principal (frase) */
+/* Texto principal */
 .firma-texto{
   font-family:'Oooh Baby', cursive;
-  font-size:20px;
+  font-size:22px;
   color:var(--text-white);
-  text-shadow: 0 0 6px rgba(255,255,255,0.5);
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
   margin-bottom:6px;
 }
 
 /* Nombre/alias */
 .firma-nombre{
-  font-size:13px;
-  color: rgba(255,255,255,0.9);
+  font-size:14px;
+  color: rgba(255,255,255,0.85);
   letter-spacing:0.6px;
 }
 
-/* Animación de glow sutil en el marco */
-@keyframes pastelGlow {
-  0% { box-shadow: 0 6px 18px rgba(167,119,255,0.12); transform:translateY(0); }
-  50% { box-shadow: 0 12px 34px rgba(167,119,255,0.18); transform:translateY(-2px); }
-  100% { box-shadow: 0 6px 18px rgba(167,119,255,0.12); transform:translateY(0); }
+/* Animación de glow sutil */
+@keyframes glowPulse {
+  0% { box-shadow: 0 6px 18px rgba(255,150,200,0.12); transform:translateY(0);}
+  50% { box-shadow: 0 12px 34px rgba(255,150,200,0.2); transform:translateY(-2px);}
+  100% { box-shadow: 0 6px 18px rgba(255,150,200,0.12); transform:translateY(0);}
 }
-.firma-frame { animation: pastelGlow 5.5s ease-in-out infinite; }
+.firma-frame { animation: glowPulse 5s ease-in-out infinite; }
 
-/* Responsive: si el foro restringe anchura, se adapta */
+/* Responsive */
 @media (max-width:380px){
-  :root{--w:320px}
+  :root{--w:320px;}
 }
