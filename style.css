@@ -1,5 +1,5 @@
 :root{
-  --w:360px;                     /* ancho de la firma */
+  --w:500px; /* ancho del GIF para respetar proporción */
   --accent-grad: linear-gradient(135deg,#ff9a9e,#fad0c4,#a1c4fd,#c2e9fb);
   --text-white: rgba(255,255,255,0.95);
 }
@@ -16,14 +16,11 @@ body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-wh
   padding:12px;
 }
 
-/* Marco con degradado y borde recto */
+/* Marco recto con degradado */
 .firma-frame{
   width:var(--w);
-  padding:0;
   background: var(--accent-grad);
-  position:relative;
   text-align:center;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
   overflow:hidden;
   border:4px solid transparent;
   background-clip: padding-box, border-box;
@@ -33,9 +30,10 @@ body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-wh
   animation: glowPulse 5s ease-in-out infinite;
 }
 
-/* GIF visible */
+/* GIF visible y respetando proporción 500x243 */
 .firma-gif{
   width:100%;
+  height:auto;
   display:block;
   margin-bottom:8px;
 }
@@ -66,6 +64,6 @@ body{font-family:'Poppins',sans-serif;background:transparent;color:var(--text-wh
 }
 
 /* Responsive */
-@media (max-width:380px){
-  :root{--w:320px;}
+@media (max-width:520px){
+  :root{--w:90%;}
 }
